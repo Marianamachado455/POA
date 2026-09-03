@@ -53,9 +53,9 @@ public class Janela extends JFrame implements ActionListener {
         }
 
         // Instância das Imagens + Redimensionamento dos Caramujos (128x55)
-        imgCarro1 = redimensionarImagem("./src/imagens/carro1.png", 128, 55);
-        imgCarro2 = redimensionarImagem("./src/imagens/carro2.png", 128, 55);
-        imgCarro3 = redimensionarImagem("./src/imagens/carro3.png", 128, 55);
+        imgCarro1 = redimensionarImagem("D:/Programacao/Faculdade/Poa/Projetos/pjrCorrida/src/imagens/lesma_amarela.png", 128, 55);
+        imgCarro2 = redimensionarImagem("D:/Programacao/Faculdade/Poa/Projetos/pjrCorrida/src/imagens/lesma_vermelha.png", 128, 55);
+        imgCarro3 = redimensionarImagem("D:/Programacao/Faculdade/Poa/Projetos/pjrCorrida/src/imagens/lesma_azul.png", 128, 55);
         
         // Botões customizados
         this.btnCorrida = new JButton("Começar Corrida");
@@ -75,18 +75,6 @@ public class Janela extends JFrame implements ActionListener {
         this.btnCancel.setBounds(670, 500, 260, 60);
         aplicarEfeitoUndertale(this.btnCorrida, "Começar Corrida");
         aplicarEfeitoUndertale(this.btnCancel, "Parar Corrida");
-
-        // Painel de Integrantes
-        this.jPanelIntegrantes = new JPanel();
-        // this.jPanelIntegrantes.setBounds(920, 490, 300, 80);
-        // this.jPanelIntegrantes.setBorder(BorderFactory.createTitledBorder("")); 
-        // this.jPanelIntegrantes.setBackground(Color.LIGHT_GRAY);
-        // this.jPanelIntegrantes.setLayout(new BorderLayout());
-        
-        // this.lblIntegrantes = new JLabel("<html><center><b>Henrique Campbell</b><br>Mariana Machado</center></html>");
-        // this.lblIntegrantes.setHorizontalAlignment(JLabel.CENTER);
-        // this.lblIntegrantes.setFont(fontePixel.deriveFont(Font.PLAIN, 9f));
-        // this.jPanelIntegrantes.add(this.lblIntegrantes);
 
         // Título
         this.titulo = new JLabel("Corrida DE Caramujo");
@@ -130,12 +118,14 @@ public class Janela extends JFrame implements ActionListener {
     // Auxiliar para os Caramujos
     public JLabel JLabelCarros(String nome, ImageIcon img, int posX, int posY) {
         CarroThread carro = new CarroThread(nome, img, posX, posY);
-        carro.setSize(128, 55);
+        carro.setBounds(posX, posY, 128, 55);
         carro.setVisible(true);
-        this.pista.add(carro); 
+        this.pista.add(carro);
+        this.pista.revalidate();
+        this.pista.repaint();
+        carro.iniciar();
         return carro;
     }
-
     // Auxiliar para as linhas da pista
     private void criarLinhaRaia(int posY) {
         JPanel linha = new JPanel();
@@ -169,6 +159,10 @@ public class Janela extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent dispara) {
         if (dispara.getSource() == this.btnCorrida) {
+            System.out.println("Carro 1 nulo? " + (imgCarro1 == null || imgCarro1.getImageLoadStatus() != java.awt.MediaTracker.COMPLETE));
+            this.pista.removeAll();
+            criarLinhaRaia(115); 
+            criarLinhaRaia(235);
             JLabelCarros("Caramujo1", imgCarro1, 10, 30);
             JLabelCarros("Caramujo2", imgCarro2, 10, 140);
             JLabelCarros("Caramujo3", imgCarro3, 10, 250);
