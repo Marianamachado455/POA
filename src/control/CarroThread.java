@@ -14,6 +14,7 @@ public class CarroThread extends JLabel implements Runnable {
     private static int pos = 0; 
     private static boolean corridaAtiva = true; 
     private final String nome;
+    private static String[] p = new String[3];
 
     public CarroThread(String nome, ImageIcon img, int posX, int posY) {
         super(img);
@@ -29,6 +30,7 @@ public class CarroThread extends JLabel implements Runnable {
     public static void resetarPosicao() {
         pos = 0;
         corridaAtiva = true;
+        p = new String[3];
     }
 
     public static void pararCorridaAnterior() {
@@ -51,11 +53,11 @@ public class CarroThread extends JLabel implements Runnable {
 
             if (posX >= 950) {
                 if (corridaAtiva) {
+                    p[pos] = nome;
                     pos++; 
-                    JOptionPane.showMessageDialog(null, pos + "º Lugar: " + nome);
-
-                    // Libera o botão chamando o método estático da Janela
+                    
                     if (pos == 3) {
+                        view.Janela.mostrarPlacarNativo(p[0], p[1], p[2]);
                         view.Janela.habilitarBotaoCorrida(true);
                     }
                 }

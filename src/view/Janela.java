@@ -10,6 +10,8 @@ import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +19,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Janela extends JFrame implements ActionListener {
 
+    public static Font fontePixelEstatica;
     private JButton btnCorrida;
     private JButton btnCancel;
     private ImageIcon imgCarro1;
@@ -49,6 +52,7 @@ public class Janela extends JFrame implements ActionListener {
         } catch (Exception e) {
             fontePixel = new Font("Monospaced", Font.BOLD, 12);
         }
+        fontePixelEstatica = this.fontePixel;
 
         // Instância e redimensionamento das imagens dos caramujos
         imgCarro1 = redimensionarImagem("D:/Programacao/Faculdade/Poa/Projetos/pjrCorrida/src/imagens/lesma_amarela.png", 128, 55);
@@ -162,6 +166,51 @@ public class Janela extends JFrame implements ActionListener {
                 btn.setText(htmlNormal);
             }
         });
+    }
+
+    // Método para exibir o placar final em uma janela nativa com estilo Undertale
+    public static void mostrarPlacarNativo(String p1, String p2, String p3) {
+        JDialog dialog = new JDialog();
+        dialog.setTitle("Resultado Final");
+        dialog.setSize(550, 240); 
+        dialog.setLocationRelativeTo(null); 
+        dialog.setLayout(null);
+        dialog.setModal(true); 
+        dialog.getContentPane().setBackground(Color.BLACK);
+        ((JComponent) dialog.getContentPane()).setBorder(
+            BorderFactory.createLineBorder(Color.WHITE, 4)
+        );
+
+        // Reduzido para 9f/10f para a fonte de pixel não "estourar" a métrica do Java
+        Font fonte = (Janela.fontePixelEstatica != null) ? 
+            Janela.fontePixelEstatica.deriveFont(Font.PLAIN, 10f) : new Font("Monospaced", Font.BOLD, 12);
+
+        JLabel lblTitulo = new JLabel("* RESULTADO FINAL *");
+        lblTitulo.setBounds(25, 20, 480, 25);
+        lblTitulo.setForeground(Color.YELLOW);
+        lblTitulo.setFont(fonte);
+
+        JLabel lbl1 = new JLabel("* 1º Lugar: " + p1);
+        lbl1.setBounds(25, 60, 480, 25);
+        lbl1.setForeground(Color.WHITE);
+        lbl1.setFont(fonte);
+
+        JLabel lbl2 = new JLabel("* 2º Lugar: " + p2);
+        lbl2.setBounds(25, 90, 480, 25);
+        lbl2.setForeground(Color.WHITE);
+        lbl2.setFont(fonte);
+
+        JLabel lbl3 = new JLabel("* 3º Lugar: " + p3);
+        lbl3.setBounds(25, 120, 480, 25);
+        lbl3.setForeground(Color.WHITE);
+        lbl3.setFont(fonte);
+
+        dialog.add(lblTitulo);
+        dialog.add(lbl1);
+        dialog.add(lbl2);
+        dialog.add(lbl3);
+
+        dialog.setVisible(true);
     }
 
     @Override
