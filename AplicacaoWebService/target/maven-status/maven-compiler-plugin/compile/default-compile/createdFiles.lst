@@ -1,0 +1,8 @@
+dto\ClimaDTO.class
+dto\DailyDTO.class
+controller\HomeController.class
+services\ClimaService.class
+dto\PrevisaoDTO.class
+dto\RespostaClimaDTO.class
+controller\ClimaController.class
+model\Clima.class
