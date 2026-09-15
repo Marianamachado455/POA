@@ -10,7 +10,7 @@
 
 <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; padding-top: 50px;">
     <div style="background-color: white; width: 400px; margin: auto; padding: 30px; border-radius: 10px; box-shadow: 0px 2px 10px #999;">
-        <h1 style="color: #2c7a4b;">💰 Simulador de descontos</h1>
+        <h1 style="color: #2c7a4b;">Simulador de descontos</h1>
         <form action="LServlet" method="post">
 
             <label for="valor">Valor original:</label>
@@ -24,7 +24,7 @@
 
             <br><br>
 
-            <label for="desconto">Desconto (%):</label>
+            <label for="desconto">Desconto:</label>
             <br>
             <input 
                 type="text" 
