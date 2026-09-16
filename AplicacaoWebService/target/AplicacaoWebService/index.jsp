@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>PreviClima</title> 
     <link rel="stylesheet" type="text/css" href="css/style.css?v=3"> 
+    <script src="js/script.js"></script>
 </head> 
 <body>  
     <div class="page-shell">  
@@ -27,9 +28,10 @@
             </nav>  
   
             <div class="search-box">  
-                <span>⌕</span>  
-                <input type="text" placeholder="Buscar cidade" />  
+                <button id="buscar">⌕</button>  
+                <input type="text" placeholder="Buscar cidade" id="cidadeEscolhida"/>  
             </div>  
+            <div id="opcoes" class="dropdown"></div>
         </header>  
   
         <main class="dashboard">  

@@ -21,7 +21,10 @@ public class ClimaController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ClimaDTO clima = service.buscarClima("Rio de Janeiro");
+        String cidade = request.getParameter("cidade");
+        System.out.println("Cidade recebida: " + cidade);
+
+        ClimaDTO clima = service.buscarClima(cidade);
         List<PrevisaoDTO> previsoes = service.buscarPrevisao();
 
         request.setAttribute("clima", clima);
