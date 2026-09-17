@@ -1,10 +1,13 @@
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PreviClima</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=2">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=3">
+    <script src="js/script.js"></script>
 </head>
 <body>
     <div class="page-shell">
@@ -24,9 +27,10 @@
             </nav>
 
             <div class="search-box">
-                <span>⌕</span>
-                <input type="text" placeholder="Buscar cidade" />
+                <button id="buscar">⌕</button>
+                <input type="text" placeholder="Buscar cidade" id="cidadeEscolhida"/>
             </div>
+            <div id="opcoes" class="dropdown"></div>
         </header>
 
         <main class="dashboard">
@@ -34,17 +38,17 @@
                 <div class="location-row">
                     <div>
                         <p class="label">Localização atual</p>
-                        <h1>São Paulo, SP</h1>
+                        <h1>${clima.localizacao}</h1>
                     </div>
-                    <span class="status-badge">Ensolarado</span>
+                    <span class="status-badge">${clima.descricao}</span>
                 </div>
 
                 <div class="weather-main">
                     <div class="temp-block">
-                        <div class="icon-weather">☀️</div>
+                        <div class="icon-weather">${clima.icone}</div>
                         <div>
-                            <strong>28°</strong>
-                            <span>Sensação térmica 31°</span>
+                            <strong>${clima.temperatura}°</strong>
+                            <span>Sensação térmica ${clima.temperaturaAparente}°</span>
                         </div>
                     </div>
 
@@ -64,20 +68,20 @@
             <section class="info-grid">
                 <article class="card stat-card">
                     <p>Umidade</p>
-                    <strong>68%</strong>
-                    <span>Estável</span>
+                    <strong>${clima.umidade}%</strong>
+                    <span>Atual</span>
                 </article>
 
                 <article class="card stat-card">
                     <p>Vento</p>
-                    <strong>18 km/h</strong>
-                    <span>NE</span>
+                    <strong>${clima.velocidadeVento} km/h</strong>
+                    <span>Atual</span>
                 </article>
 
                 <article class="card stat-card">
                     <p>Chuva</p>
-                    <strong>12%</strong>
-                    <span>Baixa prob.</span>
+                    <strong>${clima.chuva} mm</strong>
+                    <span>Atual</span>
                 </article>
             </section>
 
@@ -89,33 +93,34 @@
 
                 <div class="days">
                     <div class="day-item">
-                        <span class="day-name">Seg</span>
-                        <span class="day-icon">🌤️</span>
-                        <strong>29°</strong>
+                        <span class="day-name">${previsoes[0].diaSemana}</span>
+                        <span class="day-icon">${previsoes[0].icone}</span>
+                        <strong>${previsoes[0].temperatura}°</strong>
                     </div>
                     <div class="day-item">
-                        <span class="day-name">Ter</span>
-                        <span class="day-icon">⛅</span>
-                        <strong>27°</strong>
+                        <span class="day-name">${previsoes[1].diaSemana}</span>
+                        <span class="day-icon">${previsoes[1].icone}</span>
+                        <strong>${previsoes[1].temperatura}°</strong>
                     </div>
                     <div class="day-item">
-                        <span class="day-name">Qua</span>
-                        <span class="day-icon">🌧️</span>
-                        <strong>24°</strong>
+                        <span class="day-name">${previsoes[2].diaSemana}</span>
+                        <span class="day-icon">${previsoes[2].icone}</span>
+                        <strong>${previsoes[2].temperatura}°</strong>
                     </div>
                     <div class="day-item">
-                        <span class="day-name">Qui</span>
-                        <span class="day-icon">🌦️</span>
-                        <strong>26°</strong>
+                        <span class="day-name">${previsoes[3].diaSemana}</span>
+                        <span class="day-icon">${previsoes[3].icone}</span>
+                        <strong>${previsoes[3].temperatura}°</strong>
                     </div>
                     <div class="day-item">
-                        <span class="day-name">Sex</span>
-                        <span class="day-icon">☀️</span>
-                        <strong>30°</strong>
+                        <span class="day-name">${previsoes[4].diaSemana}</span>
+                        <span class="day-icon">${previsoes[4].icone}</span>
+                        <strong>${previsoes[4].temperatura}°</strong>
                     </div>
                 </div>
             </section>
         </main>
     </div>
+
 </body>
 </html>
