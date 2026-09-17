@@ -32,10 +32,14 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function pesquisarCidade() {
-        const cidade = inputCidade.value;
-        console.log("Cidade digitada:", cidade);
+        const cidade = inputCidade.value.trim();
+
+        if (!cidade) {
+            inputCidade.focus();
+            return;
+        }
+
         const url = "/AplicacaoWebService/clima?cidade=" + encodeURIComponent(cidade);
-        console.log("URL:", url);
         window.location.href = url;
     }
 
