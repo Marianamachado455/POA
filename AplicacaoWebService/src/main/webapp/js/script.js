@@ -3,15 +3,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const botaoBuscar = document.getElementById("buscar");
 
     function pesquisarCidade() {
-        const cidade = inputCidade.value;
-        console.log("Cidade digitada:", cidade);
-        const url = "/AplicacaoWebService/clima?cidade=" + encodeURIComponent(cidade);
-        console.log("URL:", url);
+        const cidade = inputCidade.value.trim();
 
-        //Enviar pro backend
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", "clima?cidade=" + encodeURIComponent(cidade), true);
-        xhr.send();
+        if (!cidade) {
+            inputCidade.focus();
+            return;
+        }
+
+        window.location.href = "clima?cidade=" + encodeURIComponent(cidade);
     }
 
     botaoBuscar.addEventListener("click", pesquisarCidade);

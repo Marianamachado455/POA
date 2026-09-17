@@ -21,9 +21,9 @@
             </div>
 
             <nav class="topbar-nav">
-                <a href="#" class="active">Hoje</a>
-                <a href="#">Semana</a>
-                <a href="#">Detalhes</a>
+                <a href="#hoje" class="active">Hoje</a>
+                <a href="#previsao">Semana</a>
+                <a href="#detalhes">Detalhes</a>
             </nav>
 
             <div class="search-box">
@@ -34,7 +34,7 @@
         </header>
 
         <main class="dashboard">
-            <section class="hero card">
+            <section id="hoje" class="hero card">
                 <div class="location-row">
                     <div>
                         <p class="label">Localização atual</p>
@@ -65,7 +65,7 @@
                 </div>
             </section>
 
-            <section class="info-grid">
+            <section id="detalhes" class="info-grid">
                 <article class="card stat-card">
                     <p>Umidade</p>
                     <strong>${clima.umidade}%</strong>
@@ -88,10 +88,10 @@
             <section class="forecast card">
                 <div class="section-title">
                     <h2>Próximos dias</h2>
-                    <a href="#">Ver previsão completa</a>
+                    <a href="#previsao">Ver previsão completa</a>
                 </div>
 
-                <div class="days">
+                <div id="previsao" class="days">
                     <div class="day-item">
                         <span class="day-name">${previsoes[0].diaSemana}</span>
                         <span class="day-icon">${previsoes[0].icone}</span>
