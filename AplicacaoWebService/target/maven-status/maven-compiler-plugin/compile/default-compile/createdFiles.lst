@@ -5,4 +5,6 @@ services\ClimaService.class
 dto\PrevisaoDTO.class
 dto\RespostaClimaDTO.class
 controller\ClimaController.class
+dto\RespostaLocalizacaoDTO.class
+dto\LocalizacaoDTO.class
 model\Clima.class

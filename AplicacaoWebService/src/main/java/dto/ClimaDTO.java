@@ -18,6 +18,7 @@ public class ClimaDTO {
     @JsonProperty("weather_code")
     private int codigoClima;
     private String icone;
+    private String descricao;
 
     //Necessário para o Jackson
     public ClimaDTO() {
@@ -85,5 +86,13 @@ public class ClimaDTO {
 
     public void setChuva(double chuva) {
         this.chuva = chuva;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao =  descricao;
     }
 }

@@ -109,6 +109,21 @@ body {
     border: 1px solid rgba(125, 211, 252, 0.2);
 }
 
+#buscar {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #555;
+    transition: 0.2s;
+}
+
+#buscar:hover {
+    color: #dc407e;
+    transform: scale(1.1);
+}
+
 .search-box {
     display: flex;
     align-items: center;
@@ -118,6 +133,7 @@ body {
     border: 1px solid var(--line);
     border-radius: 999px;
     min-width: 260px;
+    position: relative;
 }
 
 .search-box span {
@@ -173,6 +189,7 @@ body {
     margin: 0;
     font-size: clamp(2rem, 3vw, 3rem);
     letter-spacing: -0.04em;
+    color: #ffffff;
 }
 
 .status-badge {
@@ -295,6 +312,7 @@ body {
 .section-title h2 {
     margin: 0;
     font-size: 1.3rem;
+    color: #ffffff;
 }
 
 .section-title a {
@@ -420,4 +438,40 @@ header {
     width: 200px;
     height: 100px;
     background-color: red;
+}
+
+.search-box {
+    position: relative;
+}
+
+#sugestoes {
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    width: 100%;
+    background: rgba(17, 35, 55, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+    box-shadow: 0 12px 30px rgba(4, 12, 20, 0.45);
+    overflow: hidden;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+}
+
+#sugestoes div {
+    padding: 12px 16px;
+    color: #edf6ff;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: 0.2s;
+}
+
+#sugestoes div:last-child {
+    border-bottom: none;
+}
+
+#sugestoes div:hover {
+    background: rgba(56, 189, 248, 0.15);
+    color: #7dd3fc;
 }

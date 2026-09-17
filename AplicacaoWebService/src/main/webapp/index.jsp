@@ -27,11 +27,11 @@
                 <a href="#">Detalhes</a>  
             </nav>  
   
-            <div class="search-box">  
-                <button id="buscar">⌕</button>  
-                <input type="text" placeholder="Buscar cidade" id="cidadeEscolhida"/>  
-            </div>  
-            <div id="opcoes" class="dropdown"></div>
+            <div class="search-box">
+                <button id="buscar">⌕</button>
+                <input type="text" placeholder="Buscar cidade" id="cidadeEscolhida"/>
+                <div id="sugestoes"></div>
+            </div>
         </header>  
   
         <main class="dashboard">  
@@ -39,9 +39,9 @@
                 <div class="location-row">  
                     <div>  
                         <p class="label">Localização atual</p>  
-                        <h1>Rio de Janeiro, RJ</h1>  
+                        <h1>${cidade}</h1>
                     </div>  
-                    <span class="status-badge">Ensolarado</span>  
+                    <span class="status-badge">${clima.descricao}</span>  
                 </div>  
   
                 <div class="weather-main">  
