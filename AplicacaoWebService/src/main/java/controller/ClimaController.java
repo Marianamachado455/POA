@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.ClimaDTO;
+import dto.LocalizacaoDTO;
 import dto.PrevisaoDTO;
 import services.ClimaService;
 
@@ -23,18 +24,31 @@ public class ClimaController extends HttpServlet {
 
 
         String cidade = request.getParameter("cidade");
+
         if (cidade == null || cidade.isBlank()) {
             cidade = "Rio de Janeiro";
         }
 
+        LocalizacaoDTO localizacao = service.buscarLocalizacao(cidade);
         ClimaDTO clima = service.buscarClima(cidade);
-
         List<PrevisaoDTO> previsoes = service.buscarPrevisao(cidade);
 
-        request.setAttribute("cidade", cidade);
+        request.setAttribute("cidade", localizacao.getName());
+        request.setAttribute("estado", localizacao.getEstado());
+        request.setAttribute("pais", localizacao.getPais());
         request.setAttribute("clima", clima);
         request.setAttribute("previsoes", previsoes);
+        request.setAttribute("previsoes", previsoes);
 
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        String pagina = request.getParameter("pagina");
+
+        if ("semana".equals(pagina)) {
+            request.getRequestDispatcher("/semana.jsp").forward(request, response);
+        } else if("sobre".equals(pagina)) {
+            request.getRequestDispatcher("/sobre.jsp").forward(request, response);
+        }
+        else {
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+        }
     }
 }

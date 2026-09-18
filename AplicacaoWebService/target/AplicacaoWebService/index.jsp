@@ -1,13 +1,12 @@
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
-
-<html lang="pt-BR"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>PreviClima</title> 
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=3"> 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreviClima</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=3">
     <script src="js/script.js"></script>
 </head> 
 <body>  
@@ -22,9 +21,9 @@
             </div>  
   
             <nav class="topbar-nav">  
-                <a href="#" class="active">Hoje</a>  
-                <a href="#">Semana</a>  
-                <a href="#">Detalhes</a>  
+                <a href="clima?cidade=${cidade}" class="active">Hoje</a>
+                <a href="clima?cidade=${cidade}&pagina=semana">Semana</a>
+                <a href="clima?cidade=${cidade}&pagina=sobre">Sobre</a>
             </nav>  
   
             <div class="search-box">
@@ -35,11 +34,11 @@
         </header>  
   
         <main class="dashboard">  
-            <section class="hero card">  
+            <section id="hoje" class="hero card">  
                 <div class="location-row">  
                     <div>  
                         <p class="label">Localização atual</p>  
-                        <h1>${cidade}</h1>
+                        <h1>${cidade}, ${estado} - ${pais}</h1>
                     </div>  
                     <span class="status-badge">${clima.descricao}</span>  
                 </div>  
@@ -66,7 +65,7 @@
                 </div>  
             </section>  
   
-            <section class="info-grid">  
+            <section id="detalhes" class="info-grid">  
                 <article class="card stat-card">  
                     <p>Umidade</p>  
                     <strong>${clima.umidade}%</strong>  
@@ -89,14 +88,14 @@
             <section class="forecast card">  
                 <div class="section-title">  
                     <h2>Próximos dias</h2>  
-                    <a href="#">Ver previsão completa</a>  
+                    <a href="clima?cidade=${cidade}&pagina=semana">Ver previsão completa</a>  
                 </div>  
   
-                <div class="days">  
+                <div id="previsao" class="days">  
                     <div class="day-item">  
                         <span class="day-name">${previsoes[0].diaSemana}</span>  
                         <span class="day-icon">${previsoes[0].icone}</span>  
-                        <strong>${previsoes[0].temperatura}</strong>  
+                        <strong>${previsoes[0].temperatura}°</strong>  
                     </div>  
                     <div class="day-item">  
                         <span class="day-name">${previsoes[1].diaSemana}</span>  
@@ -122,5 +121,6 @@
             </section>  
         </main>  
     </div>  
+  
 </body>
 </html>

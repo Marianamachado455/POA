@@ -21,9 +21,9 @@
             </div>  
   
             <nav class="topbar-nav">  
-                <a href="#hoje" class="active">Hoje</a>  
-                <a href="#previsao">Semana</a>  
-                <a href="#detalhes">Detalhes</a>  
+                <a href="clima?cidade=${cidade}" class="active">Hoje</a>
+                <a href="clima?cidade=${cidade}&pagina=semana">Semana</a>
+                <a href="clima?cidade=${cidade}&pagina=sobre">Sobre</a>
             </nav>  
   
             <div class="search-box">
@@ -38,7 +38,7 @@
                 <div class="location-row">  
                     <div>  
                         <p class="label">Localização atual</p>  
-                        <h1>${cidade}</h1>
+                        <h1>${cidade}, ${estado} - ${pais}</h1>
                     </div>  
                     <span class="status-badge">${clima.descricao}</span>  
                 </div>  
@@ -88,7 +88,7 @@
             <section class="forecast card">  
                 <div class="section-title">  
                     <h2>Próximos dias</h2>  
-                    <a href="#previsao">Ver previsão completa</a>  
+                    <a href="clima?cidade=${cidade}&pagina=semana">Ver previsão completa</a>  
                 </div>  
   
                 <div id="previsao" class="days">  

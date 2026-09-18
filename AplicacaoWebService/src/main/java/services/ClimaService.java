@@ -13,9 +13,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dto.ClimaDTO;
 import dto.DailyDTO;
+import dto.LocalizacaoDTO;
 import dto.PrevisaoDTO;
 import dto.RespostaClimaDTO;
-import dto.LocalizacaoDTO;
 import dto.RespostaLocalizacaoDTO;
 
 public class ClimaService {
@@ -105,7 +105,7 @@ public class ClimaService {
                     "https://api.open-meteo.com/v1/forecast" +
                     "?latitude=" + localizacao.getLatitude() +
                     "&longitude=" + localizacao.getLongitude() +
-                    "&daily=weather_code%2Ctemperature_2m_mean" +
+                    "&daily=weather_code%2Ctemperature_2m_mean%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_probability_max%2Cwind_speed_10m_max" +
                     "&timezone=America%2FSao_Paulo" +
                     "&forecast_days=7"
                 ))
@@ -127,7 +127,11 @@ public class ClimaService {
                 PrevisaoDTO previsao = new PrevisaoDTO(
                         daily.getTime().get(i),
                         daily.getTemperaturaMedia().get(i),
-                        daily.getCodigoClima().get(i)
+                        daily.getCodigoClima().get(i),
+                        daily.getTemperaturaMinima().get(i),
+                        daily.getTemperaturaMaxima().get(i),
+                        daily.getProbabilidadeChuva().get(i),
+                        daily.getVelocidadeVentoMaxima().get(i)
                 );
 
                 int codigo = previsao.getCodigoClima();
